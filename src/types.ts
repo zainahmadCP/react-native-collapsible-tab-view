@@ -250,5 +250,8 @@ export type TabItemProps<T extends TabName> = {
 export type TabProps<T extends TabName> = {
   readonly name: T
   label?: TabItemProps<T>['label']
+  activeColor?: string
+  inactiveColor?: string
+  indicatorColor?: string
   children: React.ReactNode
 }

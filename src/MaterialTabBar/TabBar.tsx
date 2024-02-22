@@ -219,9 +219,9 @@ const MaterialTabBar = <T extends TabName = TabName>({
               scrollEnabled={scrollEnabled}
               indexDecimal={indexDecimal}
               labelStyle={labelStyle}
-              activeColor={activeColor}
-              inactiveColor={inactiveColor}
-              style={tabStyle}
+              activeColor={tabProps.get(name)?.activeColor || activeColor}
+              inactiveColor={tabProps.get(name)?.inactiveColor || inactiveColor}
+              style={[tabStyle, { zIndex: 100 }]}
             />
           )
         })}
