@@ -62,6 +62,7 @@ export const Container = React.memo(
   React.forwardRef<CollapsibleRef, CollapsibleProps>(
     (
       {
+        showDefaultTabs,
         initialTabName,
         headerHeight: initialHeaderHeight,
         minHeaderHeight = 0,
@@ -81,7 +82,7 @@ export const Container = React.memo(
         onTabChange,
         width: customWidth,
         allowHeaderOverscroll,
-        showDefaultTabs,
+
       },
       ref
     ) => {
