@@ -81,6 +81,7 @@ export const Container = React.memo(
         onTabChange,
         width: customWidth,
         allowHeaderOverscroll,
+        showDefaultTabs
       },
       ref
     ) => {
@@ -441,7 +442,7 @@ export const Container = React.memo(
                       >
                         {
                           React.Children.toArray(children)[
-                            i
+                          i
                           ] as React.ReactElement
                         }
                       </Lazy>

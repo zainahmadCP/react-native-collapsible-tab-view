@@ -5,6 +5,7 @@ import Animated, {
   useSharedValue,
   withTiming,
   interpolate,
+  interpolateColor,
 } from 'react-native-reanimated'
 
 import { isRTL } from '../helpers'
@@ -19,30 +20,36 @@ const Indicator: React.FC<IndicatorProps> = ({
   const opacity = useSharedValue(fadeIn ? 0 : 1)
 
   const stylez = useAnimatedStyle(() => {
+    const backgroundColor = interpolateColor(
+      indexDecimal.value,
+      itemsLayout.map((_, i) => i),
+      ['#9A469B', '#EF437B']
+    )
     const transform =
       itemsLayout.length > 1
         ? [
-            {
-              translateX: interpolate(
-                indexDecimal.value,
-                itemsLayout.map((_, i) => i),
-                // when in RTL mode, the X value should be inverted
-                itemsLayout.map((v) => (isRTL ? -1 * v.x : v.x))
-              ),
-            },
-          ]
+          {
+            translateX: interpolate(
+              indexDecimal.value,
+              itemsLayout.map((_, i) => i),
+              // when in RTL mode, the X value should be inverted
+              itemsLayout.map((v) => (isRTL ? -1 * v.x : v.x))
+            ),
+          },
+        ]
         : undefined
 
     const width =
       itemsLayout.length > 1
         ? interpolate(
-            indexDecimal.value,
-            itemsLayout.map((_, i) => i),
-            itemsLayout.map((v) => v.width)
-          )
+          indexDecimal.value,
+          itemsLayout.map((_, i) => i),
+          itemsLayout.map((v) => v.width)
+        )
         : itemsLayout[0]?.width
 
     return {
+      backgroundColor,
       transform,
       width,
       opacity: withTiming(opacity.value),

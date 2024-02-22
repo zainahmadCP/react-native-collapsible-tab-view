@@ -82,6 +82,8 @@ export type MaterialTabBarProps<N extends TabName> = TabBarProps<N> & {
    * Whether to keep the currently active tab centered in a scrollable tab bar
    */
   keepActiveTabCentered?: boolean
+
+  showDefaultTabs?: boolean
 }
 
 export type ItemLayout = {

@@ -59,6 +59,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
   tabStyle,
   width: customWidth,
   keepActiveTabCentered,
+  showDefaultTabs,
 }: MaterialTabBarProps<T>): React.ReactElement => {
   const tabBarRef = useAnimatedRef<Animated.ScrollView>()
   const windowWidth = useWindowDimensions().width
@@ -75,9 +76,9 @@ const MaterialTabBar = <T extends TabName = TabName>({
     scrollEnabled
       ? []
       : tabNames.map((_, i) => {
-          const tabWidth = width / nTabs
-          return { width: tabWidth, x: i * tabWidth }
-        })
+        const tabWidth = width / nTabs
+        return { width: tabWidth, x: i * tabWidth }
+      })
   )
 
   React.useEffect(() => {
@@ -199,36 +200,42 @@ const MaterialTabBar = <T extends TabName = TabName>({
       onScroll={scrollEnabled ? onScroll : undefined}
       scrollEventThrottle={16}
     >
-      {tabNames.map((name, i) => {
-        return (
-          <TabItemComponent
-            key={name}
-            index={i}
-            name={name}
-            label={tabProps.get(name)?.label || getLabelText(name)}
-            onPress={onTabPress}
-            onLayout={
-              scrollEnabled
-                ? (event) => onTabItemLayout(event, name)
-                : undefined
-            }
-            scrollEnabled={scrollEnabled}
+      {
+        showDefaultTabs
+        &&
+        tabNames.map((name, i) => {
+          return (
+            <TabItemComponent
+              key={name}
+              index={i}
+              name={name}
+              label={tabProps.get(name)?.label || getLabelText(name)}
+              onPress={onTabPress}
+              onLayout={
+                scrollEnabled
+                  ? (event) => onTabItemLayout(event, name)
+                  : undefined
+              }
+              scrollEnabled={scrollEnabled}
+              indexDecimal={indexDecimal}
+              labelStyle={labelStyle}
+              activeColor={activeColor}
+              inactiveColor={inactiveColor}
+              style={tabStyle}
+            />
+          )
+        })}
+      {
+        showDefaultTabs
+        &&
+        itemsLayout.length === nTabs && (
+          <Indicator
             indexDecimal={indexDecimal}
-            labelStyle={labelStyle}
-            activeColor={activeColor}
-            inactiveColor={inactiveColor}
-            style={tabStyle}
+            itemsLayout={itemsLayout}
+            fadeIn={scrollEnabled}
+            style={indicatorStyle}
           />
-        )
-      })}
-      {itemsLayout.length === nTabs && (
-        <Indicator
-          indexDecimal={indexDecimal}
-          itemsLayout={itemsLayout}
-          fadeIn={scrollEnabled}
-          style={indicatorStyle}
-        />
-      )}
+        )}
     </Animated.ScrollView>
   )
 }
