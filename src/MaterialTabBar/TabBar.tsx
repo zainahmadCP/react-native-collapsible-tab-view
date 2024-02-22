@@ -248,5 +248,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     flexDirection: 'row',
     flexWrap: 'nowrap',
+    backgroundColor: '#FFF8EE',
   },
 })
