@@ -81,7 +81,7 @@ export const Container = React.memo(
         onTabChange,
         width: customWidth,
         allowHeaderOverscroll,
-        showDefaultTabs
+        showDefaultTabs,
       },
       ref
     ) => {
@@ -421,6 +421,7 @@ export const Container = React.memo(
                     width,
                     onTabPress,
                     tabProps,
+                    showDefaultTabs,
                   })}
               </View>
             </Animated.View>
