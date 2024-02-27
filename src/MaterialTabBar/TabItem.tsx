@@ -61,8 +61,8 @@ export const MaterialTabItem = <T extends TabName = string>(
   return (
     <Pressable
       onLayout={onLayout}
-      style={({ pressed }) => [
-        { opacity: pressed ? pressOpacity : 1 },
+      style={() => [
+        // { opacity: pressed ? pressOpacity : 1 },
         !scrollEnabled && styles.grow,
         styles.item,
         style,
