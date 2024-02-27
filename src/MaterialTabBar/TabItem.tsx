@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react'
 import { StyleSheet, Pressable, Platform } from 'react-native'
 import Animated, {
-  Extrapolation,
-  interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated'
 
