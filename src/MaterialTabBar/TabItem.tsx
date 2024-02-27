@@ -38,12 +38,7 @@ export const MaterialTabItem = <T extends TabName = string>(
 
   const stylez = useAnimatedStyle(() => {
     return {
-      opacity: interpolate(
-        indexDecimal.value,
-        [index - 1, index, index + 1],
-        [inactiveOpacity, 1, inactiveOpacity],
-        Extrapolation.CLAMP
-      ),
+
       color:
         Math.abs(index - indexDecimal.value) < 0.5
           ? activeColor
@@ -66,17 +61,13 @@ export const MaterialTabItem = <T extends TabName = string>(
   return (
     <Pressable
       onLayout={onLayout}
-      style={() => [
-        // { opacity: pressed ? pressOpacity : 1 },
+      style={({ pressed }) => [
+        { opacity: pressed ? pressOpacity : 1 },
         !scrollEnabled && styles.grow,
         styles.item,
         style,
       ]}
       onPress={() => onPress(name)}
-      android_ripple={{
-        borderless: true,
-        color: pressColor,
-      }}
       {...rest}
     >
       {renderedLabel}
