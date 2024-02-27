@@ -78,7 +78,8 @@ const MaterialTabBar = <T extends TabName = TabName>({
     scrollEnabled
       ? []
       : tabNames.map((_, i) => {
-        const tabWidth = width / nTabs
+
+        const tabWidth = showDefaultTabs ? width / nTabs : (43 * width) / 100
         return { width: tabWidth, x: i * tabWidth }
       })
   )
@@ -191,7 +192,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
               indexDecimal.value,
               itemsLayout.map((_, i) => i),
               // when in RTL mode, the X value should be inverted
-              [0, 150]
+              [0, (46 * windowWidth) / 100]
             ),
           },
         ]
@@ -221,7 +222,8 @@ const MaterialTabBar = <T extends TabName = TabName>({
         styles.contentContainer,
         !scrollEnabled && { width },
         contentContainerStyle,
-        showDefaultTabs && { backgroundColor: '#FFF8EE' }
+        showDefaultTabs && { backgroundColor: '#FFF8EE' },
+        !showDefaultTabs && { marginHorizontal: '4%' }
       ]}
       keyboardShouldPersistTaps="handled"
       bounces={false}
@@ -290,6 +292,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
           </Animated.View>
           <Animated.View style={[stylez, styles.activeTabContainer]}>
             <Animated.Text
+              numberOfLines={1}
               style={[labelStyle, styles.activeTabText]}
             >
               {tabNames[index.value]}
@@ -320,7 +323,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    marginHorizontal: '4%',
     backgroundColor: '#FFFFFF',
   },
   outerTabContainer: {
@@ -329,7 +331,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '92%',
     height: 44,
-    padding: 0,
+    borderRadius: 8,
     backgroundColor: '#F9FAFB',
   },
   activeTabContainer: {
