@@ -63,7 +63,7 @@ const Indicator: React.FC<IndicatorProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fadeIn])
 
-  return <Animated.View style={[stylez, styles.indicator, style]} />
+  return <Animated.View style={[stylez, styles.indicator]} />
 }
 
 const styles = StyleSheet.create({
