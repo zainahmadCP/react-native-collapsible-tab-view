@@ -6,10 +6,12 @@ import {
 } from 'react-native'
 import Animated, {
   cancelAnimation,
+  interpolate,
   scrollTo,
   useAnimatedReaction,
   useAnimatedRef,
   useAnimatedScrollHandler,
+  useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
@@ -179,6 +181,37 @@ const MaterialTabBar = <T extends TabName = TabName>({
     },
     [scrollEnabled, itemsLayout, nTabs]
   )
+
+  const stylez = useAnimatedStyle(() => {
+    const transform =
+      itemsLayout.length > 1
+        ? [
+          {
+            translateX: interpolate(
+              indexDecimal.value,
+              itemsLayout.map((_, i) => i),
+              // when in RTL mode, the X value should be inverted
+              [0, 150]
+            ),
+          },
+        ]
+        : undefined
+
+    const width =
+      itemsLayout.length > 1
+        ? interpolate(
+          indexDecimal.value,
+          itemsLayout.map((_, i) => i),
+          itemsLayout.map((v) => v.width)
+        )
+        : itemsLayout[0]?.width
+
+    return {
+      transform,
+      width,
+    }
+  }, [indexDecimal, itemsLayout])
+
   return (
     <Animated.ScrollView
       ref={tabBarRef}
@@ -188,6 +221,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
         styles.contentContainer,
         !scrollEnabled && { width },
         contentContainerStyle,
+        showDefaultTabs && { backgroundColor: '#FFF8EE' }
       ]}
       keyboardShouldPersistTaps="handled"
       bounces={false}
@@ -248,14 +282,18 @@ const MaterialTabBar = <T extends TabName = TabName>({
                     }
                     scrollEnabled={scrollEnabled}
                     indexDecimal={indexDecimal}
-                    labelStyle={labelStyle}
-                    activeColor={tabProps.get(name)?.activeColor || activeColor}
-                    inactiveColor={tabProps.get(name)?.inactiveColor || inactiveColor}
-                    style={[tabStyle, { zIndex: 100 }]}
+                    labelStyle={[labelStyle, { color: '#667085' }]}
                   />
                 )
               })
             }
+          </Animated.View>
+          <Animated.View style={[stylez, styles.activeTabContainer]}>
+            <Animated.Text
+              style={[labelStyle, styles.activeTabText]}
+            >
+              {tabNames[index.value]}
+            </Animated.Text>
           </Animated.View>
         </>
       }
@@ -282,12 +320,31 @@ const styles = StyleSheet.create({
   contentContainer: {
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    backgroundColor: '#FFF8EE',
+    marginHorizontal: '4%',
+    backgroundColor: '#FFFFFF',
   },
   outerTabContainer: {
-    height: 100,
-    width: '100%',
-    padding: 8,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '92%',
+    height: 44,
+    padding: 0,
     backgroundColor: '#F9FAFB',
+  },
+  activeTabContainer: {
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 4,
+    height: 36,
+    width: '46%',
+    borderRadius: 6,
+    backgroundColor: '#FFFFFF',
+  },
+  activeTabText: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    color: '#344054',
   }
 })

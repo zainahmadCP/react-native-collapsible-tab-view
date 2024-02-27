@@ -468,14 +468,6 @@ const styles = StyleSheet.create({
     zIndex: 100,
     width: '100%',
     backgroundColor: 'white',
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
   },
   tabBarContainer: {
     zIndex: 1,
