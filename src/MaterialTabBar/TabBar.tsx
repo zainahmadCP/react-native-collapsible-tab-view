@@ -204,6 +204,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
         showDefaultTabs
         &&
         tabNames.map((name, i) => {
+          console.log("active color is: ", tabProps.get(name)?.activeColor, tabProps.get(name))
           return (
             <TabItemComponent
               key={name}
