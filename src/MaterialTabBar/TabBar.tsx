@@ -226,6 +226,40 @@ const MaterialTabBar = <T extends TabName = TabName>({
           )
         })}
       {
+        !showDefaultTabs
+        &&
+        nTabs == 2
+        &&
+        <>
+          <Animated.View style={styles.outerTabContainer}>
+            {
+              tabNames?.map((name, i) => {
+                return (
+                  <TabItemComponent
+                    key={name}
+                    index={i}
+                    name={name}
+                    label={tabProps.get(name)?.label || getLabelText(name)}
+                    onPress={onTabPress}
+                    onLayout={
+                      scrollEnabled
+                        ? (event) => onTabItemLayout(event, name)
+                        : undefined
+                    }
+                    scrollEnabled={scrollEnabled}
+                    indexDecimal={indexDecimal}
+                    labelStyle={labelStyle}
+                    activeColor={tabProps.get(name)?.activeColor || activeColor}
+                    inactiveColor={tabProps.get(name)?.inactiveColor || inactiveColor}
+                    style={[tabStyle, { zIndex: 100 }]}
+                  />
+                )
+              })
+            }
+          </Animated.View>
+        </>
+      }
+      {
         showDefaultTabs
         &&
         itemsLayout.length === nTabs && (
@@ -250,4 +284,8 @@ const styles = StyleSheet.create({
     flexWrap: 'nowrap',
     backgroundColor: '#FFF8EE',
   },
+  outerTabContainer: {
+    padding: 8,
+    backgroundColor: '#F9FAFB',
+  }
 })
