@@ -52,7 +52,7 @@ const Indicator: React.FC<IndicatorProps> = ({
       backgroundColor,
       transform,
       width,
-      // opacity: withTiming(opacity.value),
+      opacity: withTiming(opacity.value),
     }
   }, [indexDecimal, itemsLayout])
 
