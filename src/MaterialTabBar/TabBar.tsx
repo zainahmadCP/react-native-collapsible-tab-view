@@ -285,6 +285,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF8EE',
   },
   outerTabContainer: {
+    height: 100,
+    width: '100%',
     padding: 8,
     backgroundColor: '#F9FAFB',
   }
