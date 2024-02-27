@@ -234,7 +234,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
             indexDecimal={indexDecimal}
             itemsLayout={itemsLayout}
             fadeIn={scrollEnabled}
-          // style={indicatorStyle}
+            style={indicatorStyle}
           />
         )}
     </Animated.ScrollView>
