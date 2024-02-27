@@ -45,6 +45,7 @@ export type TabBarProps<T extends TabName = TabName> = {
    * Custom width of the tabbar. Defaults to the window width.
    */
   width?: number
+  showDefaultTabs?: any
 }
 
 export type IndexChangeEventData<T extends TabName = TabName> = {
