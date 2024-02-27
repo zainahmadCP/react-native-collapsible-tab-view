@@ -52,7 +52,7 @@ const Indicator: React.FC<IndicatorProps> = ({
       backgroundColor,
       transform,
       width,
-      opacity: withTiming(opacity.value),
+      // opacity: withTiming(opacity.value),
     }
   }, [indexDecimal, itemsLayout])
 
@@ -69,7 +69,6 @@ const Indicator: React.FC<IndicatorProps> = ({
 const styles = StyleSheet.create({
   indicator: {
     height: 2,
-    // backgroundColor: '#2196f3',
     position: 'absolute',
     width: '100%',
     bottom: 0,
