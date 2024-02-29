@@ -192,7 +192,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
               indexDecimal.value,
               itemsLayout.map((_, i) => i),
               // when in RTL mode, the X value should be inverted
-              [0, (46 * windowWidth) / 100]
+              [0, ((46 * windowWidth) / 100) + 4]
             ),
           },
         ]
