@@ -62,7 +62,6 @@ const MaterialTabBar = <T extends TabName = TabName>({
   width: customWidth,
   keepActiveTabCentered,
   showDefaultTabs,
-  activeIndex,
 }: MaterialTabBarProps<T>): React.ReactElement => {
   const tabBarRef = useAnimatedRef<Animated.ScrollView>()
   const windowWidth = useWindowDimensions().width
@@ -79,7 +78,6 @@ const MaterialTabBar = <T extends TabName = TabName>({
     scrollEnabled
       ? []
       : tabNames.map((_, i) => {
-
         const tabWidth = showDefaultTabs ? width / nTabs : (43 * width) / 100
         return { width: tabWidth, x: i * tabWidth }
       })
@@ -223,8 +221,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
         styles.contentContainer,
         !scrollEnabled && { width },
         contentContainerStyle,
-        showDefaultTabs && { backgroundColor: '#FFF8EE' },
-        !showDefaultTabs && { marginHorizontal: '4%' }
+        showDefaultTabs && { backgroundColor: '#FFF8EE', marginHorizontal: '0%' }
       ]}
       keyboardShouldPersistTaps="handled"
       bounces={false}
@@ -293,16 +290,9 @@ const MaterialTabBar = <T extends TabName = TabName>({
           </Animated.View>
           <Animated.View style={[stylez, styles.activeTabContainer]}>
             <Animated.Text
-              numberOfLines={1}
               style={[labelStyle, styles.activeTabText]}
             >
-              {
-                activeIndex
-                  ?
-                  tabNames[activeIndex]
-                  :
-                  tabNames[index.value]
-              }
+              {tabNames[index.value]}
             </Animated.Text>
           </Animated.View>
         </>
@@ -330,6 +320,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     flexDirection: 'row',
     flexWrap: 'nowrap',
+    marginHorizontal: '4%',
     backgroundColor: '#FFFFFF',
   },
   outerTabContainer: {
@@ -338,7 +329,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '92%',
     height: 44,
-    borderRadius: 8,
+    padding: 0,
     backgroundColor: '#F9FAFB',
   },
   activeTabContainer: {
