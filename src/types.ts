@@ -46,6 +46,7 @@ export type TabBarProps<T extends TabName = TabName> = {
    */
   width?: number
   showDefaultTabs?: any
+  activeIndex?: any
 }
 
 export type IndexChangeEventData<T extends TabName = TabName> = {
@@ -131,6 +132,8 @@ export type CollapsibleProps = {
   allowHeaderOverscroll?: boolean
 
   showDefaultTabs?: any
+
+  activeIndex?: any
 }
 
 export type ContextType<T extends TabName = TabName> = {

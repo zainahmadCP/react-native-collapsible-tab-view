@@ -84,6 +84,8 @@ export type MaterialTabBarProps<N extends TabName> = TabBarProps<N> & {
   keepActiveTabCentered?: boolean
 
   showDefaultTabs?: any
+
+  activeIndex?: any
 }
 
 export type ItemLayout = {

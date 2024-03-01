@@ -62,6 +62,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
   width: customWidth,
   keepActiveTabCentered,
   showDefaultTabs,
+  activeIndex,
 }: MaterialTabBarProps<T>): React.ReactElement => {
   const tabBarRef = useAnimatedRef<Animated.ScrollView>()
   const windowWidth = useWindowDimensions().width
@@ -295,7 +296,13 @@ const MaterialTabBar = <T extends TabName = TabName>({
               numberOfLines={1}
               style={[labelStyle, styles.activeTabText]}
             >
-              {tabNames[index.value]}
+              {
+                activeIndex
+                  ?
+                  tabNames[activeIndex]
+                  :
+                  tabNames[index.value]
+              }
             </Animated.Text>
           </Animated.View>
         </>
