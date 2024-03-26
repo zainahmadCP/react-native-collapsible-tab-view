@@ -50,7 +50,7 @@ export const MaterialTabItem = <T extends TabName = string>(
     if (typeof label === 'string') {
       return (
         showCount ?
-          <Animated.View style={{ flexDirection: 'row' }}>
+          <Animated.View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', }}>
             <Animated.Text style={[styles.label, stylez, labelStyle]}>
               {label}
             </Animated.Text>
