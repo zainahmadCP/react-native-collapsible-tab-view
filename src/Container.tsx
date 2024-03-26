@@ -83,6 +83,7 @@ export const Container = React.memo(
         allowHeaderOverscroll,
         showDefaultTabs,
         activeIndex,
+        showCount,
       },
       ref
     ) => {
@@ -424,6 +425,7 @@ export const Container = React.memo(
                     tabProps,
                     showDefaultTabs,
                     activeIndex,
+                    showCount,
                   })}
               </View>
             </Animated.View>
