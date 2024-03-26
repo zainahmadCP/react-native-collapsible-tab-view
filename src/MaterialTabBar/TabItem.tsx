@@ -19,6 +19,7 @@ export const MaterialTabItem = <T extends TabName = string>(
   const {
     name,
     index,
+    showCount,
     count,
     onPress,
     onLayout,
@@ -48,9 +49,21 @@ export const MaterialTabItem = <T extends TabName = string>(
   const renderedLabel = useMemo(() => {
     if (typeof label === 'string') {
       return (
-        <Animated.Text style={[styles.label, stylez, labelStyle]}>
-          {label}
-        </Animated.Text>
+        showCount ?
+          <Animated.View style={{ flexDirection: 'row' }}>
+            <Animated.Text style={[styles.label, stylez, labelStyle]}>
+              {label}
+            </Animated.Text>
+            <Animated.View style={styles.countCon}>
+              <Animated.Text style={styles.countText}>
+                {count}
+              </Animated.Text>
+            </Animated.View>
+          </Animated.View>
+          :
+          <Animated.Text style={[styles.label, stylez, labelStyle]}>
+            {label}
+          </Animated.Text>
       )
     }
 
@@ -86,5 +99,20 @@ const styles = StyleSheet.create({
   },
   label: {
     margin: 4,
+  },
+  countCon: {
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+    borderRadius: 16,
+    overflow: 'hidden',
+    marginStart: 8,
+    backgroundColor: '#F2F4F7',
+  },
+  countText: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    color: '#344054',
+    fontWeight: '500',
+    fontSize: 12,
   },
 })

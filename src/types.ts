@@ -255,6 +255,7 @@ export type TabItemProps<T extends TabName> = {
   indexDecimal: Animated.SharedValue<number>
 
   label: string | ((props: TabItemProps<T>) => React.ReactNode)
+  showCount?: any
   count?: any
 }
 

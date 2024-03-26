@@ -273,6 +273,8 @@ const MaterialTabBar = <T extends TabName = TabName>({
                 return (
                   <TabItemComponent
                     key={name}
+                    showCount={showCount}
+                    count={showCount && counts[index.value]}
                     index={i}
                     name={name}
                     label={tabProps.get(name)?.label || getLabelText(name)}
