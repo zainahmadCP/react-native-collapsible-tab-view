@@ -49,6 +49,8 @@ export type TabBarProps<T extends TabName = TabName> = {
   activeIndex?: any
   showCount?: any
   counts?: any
+  RF?: any
+  RFT?: any
 }
 
 export type IndexChangeEventData<T extends TabName = TabName> = {
