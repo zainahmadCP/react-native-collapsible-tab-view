@@ -134,6 +134,8 @@ export type CollapsibleProps = {
   showDefaultTabs?: any
 
   activeIndex?: any
+
+  showCount?: any
 }
 
 export type ContextType<T extends TabName = TabName> = {
@@ -249,6 +251,7 @@ export type TabItemProps<T extends TabName> = {
   indexDecimal: Animated.SharedValue<number>
 
   label: string | ((props: TabItemProps<T>) => React.ReactNode)
+  count?: any
 }
 
 export type TabProps<T extends TabName> = {

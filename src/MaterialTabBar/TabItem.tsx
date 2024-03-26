@@ -19,6 +19,7 @@ export const MaterialTabItem = <T extends TabName = string>(
   const {
     name,
     index,
+    count,
     onPress,
     onLayout,
     scrollEnabled,

@@ -86,6 +86,8 @@ export type MaterialTabBarProps<N extends TabName> = TabBarProps<N> & {
   showDefaultTabs?: any
 
   activeIndex?: any
+
+  showCount?: any
 }
 
 export type ItemLayout = {
