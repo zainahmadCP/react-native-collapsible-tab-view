@@ -84,6 +84,7 @@ export const Container = React.memo(
         showDefaultTabs,
         activeIndex,
         showCount,
+        counts,
       },
       ref
     ) => {
@@ -426,6 +427,7 @@ export const Container = React.memo(
                     showDefaultTabs,
                     activeIndex,
                     showCount,
+                    counts,
                   })}
               </View>
             </Animated.View>

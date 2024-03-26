@@ -137,6 +137,8 @@ export type CollapsibleProps = {
   activeIndex?: any
 
   showCount?: any
+
+  counts?: any
 }
 
 export type ContextType<T extends TabName = TabName> = {

@@ -88,6 +88,8 @@ export type MaterialTabBarProps<N extends TabName> = TabBarProps<N> & {
   activeIndex?: any
 
   showCount?: any
+
+  counts?: any
 }
 
 export type ItemLayout = {
