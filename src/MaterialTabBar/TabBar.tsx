@@ -298,7 +298,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
             </Animated.Text>
             {
               showCount &&
-              <Animated.View>
+              <Animated.View style={styles.countCon}>
                 <Animated.Text
                   style={styles.countText}
                 >
@@ -371,6 +371,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
     color: '#344054',
-    fontWeight: '500'
+    fontWeight: '500',
+    fontSize: 12,
   },
 })
