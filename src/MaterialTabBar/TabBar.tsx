@@ -294,7 +294,6 @@ const MaterialTabBar = <T extends TabName = TabName>({
               style={[labelStyle, styles.activeTabText]}
             >
               {tabNames[index.value]}
-
               {showCount && 'sss'}
             </Animated.Text>
           </Animated.View>
