@@ -290,13 +290,22 @@ const MaterialTabBar = <T extends TabName = TabName>({
               })
             }
           </Animated.View>
-          <Animated.View style={[stylez, styles.activeTabContainer]}>
+          <Animated.View style={[stylez, styles.activeTabContainer, showCount && { flexDirection: 'row' }]}>
             <Animated.Text
               style={[labelStyle, styles.activeTabText]}
             >
               {tabNames[index.value]}
-              {showCount && counts && counts[index.value]}
             </Animated.Text>
+            {
+              showCount &&
+              <Animated.View>
+                <Animated.Text
+                  style={styles.countText}
+                >
+                  {counts[index.value]}
+                </Animated.Text>
+              </Animated.View>
+            }
           </Animated.View>
         </>
       }
@@ -349,5 +358,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
     color: '#344054',
-  }
+  },
+  countCon: {
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+    borderRadius: 16,
+    overflow: 'hidden',
+    marginStart: 8,
+    backgroundColor: '#F2F4F7',
+  },
+  countText: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    color: '#344054',
+    fontWeight: '500'
+  },
 })
