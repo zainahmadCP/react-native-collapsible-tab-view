@@ -90,10 +90,6 @@ export type MaterialTabBarProps<N extends TabName> = TabBarProps<N> & {
   showCount?: any
 
   counts?: any
-
-  RF?: any
-
-  RFT?: any
 }
 
 export type ItemLayout = {

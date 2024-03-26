@@ -64,8 +64,6 @@ const MaterialTabBar = <T extends TabName = TabName>({
   showDefaultTabs,
   showCount,
   counts,
-  RF,
-  RFT,
 }: MaterialTabBarProps<T>): React.ReactElement => {
   const tabBarRef = useAnimatedRef<Animated.ScrollView>()
   const windowWidth = useWindowDimensions().width
@@ -82,7 +80,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
     scrollEnabled
       ? []
       : tabNames.map((_, i) => {
-        const tabWidth = showDefaultTabs ? width / nTabs : (RF ? RF(43) : 43 * width) / RF ? RF(100) : 100
+        const tabWidth = showDefaultTabs ? width / nTabs : (43 * width) / 100
         return { width: tabWidth, x: i * tabWidth }
       })
   )
@@ -269,7 +267,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
         nTabs == 2
         &&
         <>
-          <Animated.View style={[styles.outerTabContainer, RF && { height: RF(44) }]}>
+          <Animated.View style={styles.outerTabContainer}>
             {
               tabNames?.map((name, i) => {
                 return (
@@ -294,7 +292,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
               })
             }
           </Animated.View>
-          <Animated.View style={[stylez, styles.activeTabContainer, showCount && { flexDirection: 'row' }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6) }]}>
+          <Animated.View style={[stylez, styles.activeTabContainer, showCount && { flexDirection: 'row' }]}>
             <Animated.Text
               style={[labelStyle, styles.activeTabText]}
             >
@@ -302,9 +300,9 @@ const MaterialTabBar = <T extends TabName = TabName>({
             </Animated.Text>
             {
               showCount &&
-              <Animated.View style={[styles.countCon, RF && { paddingVertical: RF(2), paddingHorizontal: RF(8), borderRadius: RF(16), marginStart: RF(8) }]}>
+              <Animated.View style={styles.countCon}>
                 <Animated.Text
-                  style={[styles.countText, RFT && { fontSize: RFT(12) }]}
+                  style={styles.countText}
                 >
                   {counts[index.value]}
                 </Animated.Text>

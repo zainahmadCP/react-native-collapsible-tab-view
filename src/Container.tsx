@@ -85,8 +85,6 @@ export const Container = React.memo(
         activeIndex,
         showCount,
         counts,
-        RF,
-        RFT,
       },
       ref
     ) => {
@@ -430,8 +428,6 @@ export const Container = React.memo(
                     activeIndex,
                     showCount,
                     counts,
-                    RF,
-                    RFT,
                   })}
               </View>
             </Animated.View>

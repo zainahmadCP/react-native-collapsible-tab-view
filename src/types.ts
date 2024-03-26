@@ -140,10 +140,6 @@ export type CollapsibleProps = {
   showCount?: any
 
   counts?: any
-
-  RF?: any
-
-  RFT?: any
 }
 
 export type ContextType<T extends TabName = TabName> = {
