@@ -82,7 +82,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
     scrollEnabled
       ? []
       : tabNames.map((_, i) => {
-        const tabWidth = showDefaultTabs ? width / nTabs : (RF ? RF(43 * width) : 43 * width) / RF ? RF(100) : 100
+        const tabWidth = showDefaultTabs ? width / nTabs : (RF ? RF(43) : 43 * width) / RF ? RF(100) : 100
         return { width: tabWidth, x: i * tabWidth }
       })
   )
