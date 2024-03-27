@@ -33,6 +33,8 @@ export const MaterialTabItem = <T extends TabName = string>(
     inactiveOpacity = 0.7,
     pressColor = '#DDDDDD',
     pressOpacity = Platform.OS === 'ios' ? 0.2 : 1,
+    RF,
+    RFT
     ...rest
   } = props
 
@@ -54,14 +56,14 @@ export const MaterialTabItem = <T extends TabName = string>(
             <Animated.Text style={[styles.label, stylez, labelStyle]}>
               {label}
             </Animated.Text>
-            <Animated.View style={styles.countCon}>
-              <Animated.Text style={styles.countText}>
+            <Animated.View style={[styles.countCon, RF && { paddingVertical: RF(2), paddingHorizontal: RF(8), borderRadius: RF(16), marginStart: RF(8) }]}>
+              <Animated.Text style={[styles.countText, RFT && { fontSize: RFT(12) }]}>
                 {count}
               </Animated.Text>
             </Animated.View>
           </Animated.View>
           :
-          <Animated.Text style={[styles.label, stylez, labelStyle]}>
+          <Animated.Text style={[styles.label, stylez, labelStyle, RF && { margin: RF(4) }]}>
             {label}
           </Animated.Text>
       )

@@ -263,6 +263,8 @@ export type TabItemProps<T extends TabName> = {
   label: string | ((props: TabItemProps<T>) => React.ReactNode)
   showCount?: any
   count?: any
+  RF?: any
+  RFT?: any
 }
 
 export type TabProps<T extends TabName> = {
