@@ -34,7 +34,7 @@ export const MaterialTabItem = <T extends TabName = string>(
     pressColor = '#DDDDDD',
     pressOpacity = Platform.OS === 'ios' ? 0.2 : 1,
     RF,
-    RFT
+    RFT,
     ...rest
   } = props
 
