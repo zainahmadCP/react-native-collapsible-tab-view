@@ -368,7 +368,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
       }
       {
         !showDefaultTabs && (nTabs > 2 || nTabs == 1) &&
-        <Animated.View style={[styles.outerTabContainer, RF && { height: RF(44) }]}>
+        <Animated.View style={[styles.outerTabContainer, { width: '75%' }, RF && { height: RF(44) }]}>
           {
             tabNames?.map((tab: any, index: any) => {
               return <MyComponent key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF} labelStyle={labelStyle} />
