@@ -320,7 +320,8 @@ const MaterialTabBar = <T extends TabName = TabName>({
           // return <Animated.View style={[stylez, styles.activeTabContainer]}>
           //   <Text>{index}</Text>
           // </Animated.View>
-          return <MyComponent key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF && RF} RFT={RFT && RFT} />
+          return <View style={{ height: 50, width: '100%', backgroundColor: 'red' }} />
+          // <MyComponent key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF && RF} RFT={RFT && RFT} />
         })
       }
       {
