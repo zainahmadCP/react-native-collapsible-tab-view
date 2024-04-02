@@ -389,6 +389,17 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 12,
   },
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
+    backgroundColor: 'white',
+  },
 })
 
 const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT }: any) => {
@@ -439,7 +450,17 @@ const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT }: a
   }, [indexDecimal, itemsLayout])
 
   return (
-    <Animated.View style={[style2z, styles.activeTabContainer, styles.shadow]}>
+    <Animated.View style={[style2z, styles.activeTabContainer, {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: RF(0),
+        height: RF(1),
+      },
+      shadowOpacity: RF(0.2),
+      shadowRadius: RF(1.41),
+      elevation: RF(2),
+      backgroundColor: 'white',
+    }]}>
       <Text style={{ textAlign: 'center', fontSize: RFT ? RFT(14) : 14, color: 'black' }}>{tabNames[index]}</Text>
     </Animated.View>
   );
