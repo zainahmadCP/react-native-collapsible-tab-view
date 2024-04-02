@@ -7,6 +7,7 @@ import {
 import Animated, {
   cancelAnimation,
   interpolate,
+  interpolateColor,
   scrollTo,
   useAnimatedReaction,
   useAnimatedRef,
@@ -20,6 +21,7 @@ import { TabName } from '../types'
 import { Indicator } from './Indicator'
 import { MaterialTabItem } from './TabItem'
 import { MaterialTabBarProps, ItemLayout } from './types'
+import { Text } from 'react-native';
 
 export const TABBAR_HEIGHT = 48
 
@@ -314,6 +316,15 @@ const MaterialTabBar = <T extends TabName = TabName>({
         </>
       }
       {
+        !showDefaultTabs && (nTabs > 2 || nTabs == 1) &&
+        tabNames?.map((tab: any, index: any) => {
+          // return <Animated.View style={[stylez, styles.activeTabContainer]}>
+          //   <Text>{index}</Text>
+          // </Animated.View>
+          return <MyComponent index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF && RF} RFT={RFT && RFT} />
+        })
+      }
+      {
         showDefaultTabs
         &&
         itemsLayout.length === nTabs && (
@@ -378,4 +389,58 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 12,
   },
+})
+
+const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT }: any) => {
+
+  const style2z = useAnimatedStyle(() => {
+
+    const backgroundColor = interpolateColor(
+      indexDecimal.value,
+      itemsLayout.map((_, i) => i),
+      ['white', 'white']
+    )
+    // currentTabName.current = tabNames[Math.floor(indexDecimal.value)]
+    // console.log("item layout are: ", itemsLayout, windowWidth);
+    // console.log("current tab name: ", currentTabName?.current)
+
+
+    const transform: any =
+      itemsLayout.length > 1
+        ? [
+          {
+            translateX: interpolate(
+              indexDecimal.value,
+              [0, 1],
+              // when in RTL mode, the X value should be inverted
+              // [-140 * index, 0]
+              [index == 0 ? 0 : (-250 * index) - (35 * index), index == 0 ? 250 + 35 : (-250 * index - (35 * index)) + 250 + 35]
+            ),
+          },
+        ]
+        : undefined
+
+    const width =
+      itemsLayout.length > 1
+        ? interpolate(
+          indexDecimal.value,
+          itemsLayout.map((_, i) => i),
+          itemsLayout.map((v) => v.width)
+        )
+        : itemsLayout[0]?.width
+
+
+    return {
+      transform,
+      width,
+      // opacity: 0,
+      backgroundColor
+    }
+  }, [indexDecimal, itemsLayout])
+
+  return (
+    <Animated.View style={[style2z, styles.activeTabContainer, styles.shadow]}>
+      <Text style={{ textAlign: 'center', fontSize: RFT ? RFT(14) : 14, color: 'black' }}>{tabNames[index]}</Text>
+    </Animated.View>
+  );
 })
