@@ -377,6 +377,50 @@ const MaterialTabBar = <T extends TabName = TabName>({
         </Animated.View>
       }
       {
+        !showDefaultTabs &&
+        nTabs > 2
+        &&
+        <Pressable
+          style={{ justifyContent: 'center' }}
+          onPress={() => {
+            if (indexData?.selected == 0) {
+              onTabPress(tabNames[indexData?.selected + 1])
+              setIndexData({
+                selected: indexData?.selected + 1,
+                listIndex: 0,
+              })
+            } else if (indexData?.listIndex < indexData?.selected) {
+              if (indexData?.selected < tabNames?.length - 1) {
+                onTabPress(tabNames[indexData?.selected + 1])
+                setIndexData({
+                  selected: indexData?.selected + 1,
+                  listIndex: indexData?.selected
+                })
+              } else {
+                onTabPress(tabNames[0])
+                setIndexData({
+                  selected: 0,
+                  listIndex: 1,
+                })
+              }
+            }
+
+
+            // onTabPress(name)
+
+          }}
+        >
+          <Image
+            source={require('../assets/next_icon.png')}
+            style={{
+              alignSelf: 'center',
+              height: 25,
+              width: 25,
+            }}
+          />
+        </Pressable>
+      }
+      {
         showDefaultTabs
         &&
         itemsLayout.length === nTabs && (
