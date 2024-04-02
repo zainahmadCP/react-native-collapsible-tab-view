@@ -21,7 +21,6 @@ import { TabName } from '../types'
 import { Indicator } from './Indicator'
 import { MaterialTabItem } from './TabItem'
 import { MaterialTabBarProps, ItemLayout } from './types'
-import { Text } from 'react-native';
 
 export const TABBAR_HEIGHT = 48
 
@@ -461,7 +460,7 @@ const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT }: a
       elevation: RF(2),
       backgroundColor: 'white',
     }]}>
-      <Text style={{ textAlign: 'center', fontSize: RFT ? RFT(14) : 14, color: 'black' }}>{tabNames[index]}</Text>
+      <Animated.Text style={{ textAlign: 'center', fontSize: RFT ? RFT(14) : 14, color: 'black' }}>{tabNames[index]}</Animated.Text>
     </Animated.View>
   );
 })
