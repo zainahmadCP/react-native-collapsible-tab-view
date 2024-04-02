@@ -279,29 +279,23 @@ const MaterialTabBar = <T extends TabName = TabName>({
           style={{ justifyContent: 'center' }}
           onPress={() => {
             if (indexData?.selected == 0) {
-              // setTabs([tabNames[tabNames?.length - 2], tabNames[tabNames?.length - 1]])
               onTabPress(tabNames[tabNames?.length - 1])
               setIndexData({
                 selected: tabNames?.length - 1,
                 listIndex: tabNames?.length - 2,
               })
-              // setIsFirstSelected(false);
             } else if (indexData?.listIndex < indexData?.selected) {
-              // setTabs([tabNames[indexData?.listIndex], tabNames[indexData?.selected]])
               onTabPress(tabNames[indexData?.listIndex])
               setIndexData({
                 selected: indexData?.listIndex,
                 listIndex: indexData?.listIndex + 1,
               })
-              // setIsFirstSelected(true);
             } else {
-              // setTabs([tabNames[indexData?.selected - 1], tabNames[indexData?.selected]])
               onTabPress(tabNames[indexData?.selected - 1])
               setIndexData({
                 selected: indexData?.selected - 1,
                 listIndex: indexData?.selected,
               })
-              // setIsFirstSelected(true);
             }
           }}
         >
@@ -368,7 +362,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
       }
       {
         !showDefaultTabs && (nTabs > 2 || nTabs == 1) &&
-        <Animated.View style={[styles.outerTabContainer, { width: '80%', justifyContent: 'center' }, RF && { height: RF(44) }]}>
+        <Animated.View style={[styles.outerTabContainer, { width: '78%', justifyContent: 'center' }, RF && { height: RF(44), borderRadius: RF(6) }]}>
           {
             tabNames?.map((tab: any, index: any) => {
               return <MyComponent key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF} labelStyle={labelStyle} />
@@ -404,18 +398,14 @@ const MaterialTabBar = <T extends TabName = TabName>({
                 })
               }
             }
-
-
-            // onTabPress(name)
-
           }}
         >
           <Image
             source={require('../assets/next_icon.png')}
             style={{
               alignSelf: 'center',
-              height: RF(25),
-              width: RF(25),
+              height: RF ? RF(25) : 25,
+              width: RF ? RF(25) : 25,
             }}
           />
         </Pressable>
