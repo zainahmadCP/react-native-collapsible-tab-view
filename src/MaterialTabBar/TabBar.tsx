@@ -414,8 +414,8 @@ const MaterialTabBar = <T extends TabName = TabName>({
             source={require('../assets/next_icon.png')}
             style={{
               alignSelf: 'center',
-              height: 25,
-              width: 25,
+              height: RF(25),
+              width: RF(25),
             }}
           />
         </Pressable>
