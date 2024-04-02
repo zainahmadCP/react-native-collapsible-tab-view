@@ -397,7 +397,7 @@ const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT }: a
 
     const backgroundColor = interpolateColor(
       indexDecimal.value,
-      itemsLayout.map((_, i) => i),
+      itemsLayout.map((_: any, i: any) => i),
       ['white', 'white']
     )
     // currentTabName.current = tabNames[Math.floor(indexDecimal.value)]
@@ -424,8 +424,8 @@ const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT }: a
       itemsLayout.length > 1
         ? interpolate(
           indexDecimal.value,
-          itemsLayout.map((_, i) => i),
-          itemsLayout.map((v) => v.width)
+          itemsLayout.map((_: any, i: any) => i),
+          itemsLayout.map((v: any) => v.width)
         )
         : itemsLayout[0]?.width
 
