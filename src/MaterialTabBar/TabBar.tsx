@@ -295,7 +295,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
               })
             }
           </Animated.View>
-          <Animated.View style={[stylez, styles.activeTabContainer, showCount && { flexDirection: 'row' }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6) }]}>
+          <Animated.View style={[stylez, styles.activeTabContainer, { width: '46%' }, showCount && { flexDirection: 'row' }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6) }]}>
             <Animated.Text
               style={[labelStyle, styles.activeTabText]}
             >
@@ -366,7 +366,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 4,
     height: 36,
-    width: '46%',
     borderRadius: 6,
     backgroundColor: '#FFFFFF',
   },
