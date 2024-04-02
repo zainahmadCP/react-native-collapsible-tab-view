@@ -1,5 +1,8 @@
 import React from 'react'
 import {
+  useState,
+  Image,
+  Pressable,
   StyleSheet,
   useWindowDimensions,
   LayoutChangeEvent,
@@ -78,6 +81,11 @@ const MaterialTabBar = <T extends TabName = TabName>({
   const isScrolling = useSharedValue(false)
 
   const nTabs = tabNames.length
+
+  const [indexData, setIndexData] = useState({
+    selected: 0,
+    listIndex: 0,
+  });
 
   const [itemsLayout, setItemsLayout] = React.useState<ItemLayout[]>(
     scrollEnabled
@@ -264,6 +272,51 @@ const MaterialTabBar = <T extends TabName = TabName>({
             />
           )
         })}
+      {
+        !showDefaultTabs &&
+        nTabs > 2
+        &&
+        <Pressable
+          style={{ justifyContent: 'center' }}
+          onPress={() => {
+            if (indexData?.selected == 0) {
+              // setTabs([tabNames[tabNames?.length - 2], tabNames[tabNames?.length - 1]])
+              onTabPress(tabNames[tabNames?.length - 1])
+              setIndexData({
+                selected: tabNames?.length - 1,
+                listIndex: tabNames?.length - 2,
+              })
+              // setIsFirstSelected(false);
+            } else if (indexData?.listIndex < indexData?.selected) {
+              // setTabs([tabNames[indexData?.listIndex], tabNames[indexData?.selected]])
+              onTabPress(tabNames[indexData?.listIndex])
+              setIndexData({
+                selected: indexData?.listIndex,
+                listIndex: indexData?.listIndex + 1,
+              })
+              // setIsFirstSelected(true);
+            } else {
+              // setTabs([tabNames[indexData?.selected - 1], tabNames[indexData?.selected]])
+              onTabPress(tabNames[indexData?.selected - 1])
+              setIndexData({
+                selected: indexData?.selected - 1,
+                listIndex: indexData?.selected,
+              })
+              // setIsFirstSelected(true);
+            }
+          }}
+        >
+          <Image
+            source={require('../assets/next_icon.png')}
+            style={{
+              alignSelf: 'center',
+              height: RF ? RF(25) : 25,
+              width: RF ? RF(25) : 25,
+              transform: [{ rotate: '180deg' }],
+            }}
+          />
+        </Pressable>
+      }
       {
         !showDefaultTabs
         &&
