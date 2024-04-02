@@ -83,7 +83,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
     scrollEnabled
       ? []
       : tabNames.map((_, i) => {
-        const tabWidth = showDefaultTabs ? width / nTabs : nTabs > 2 ? (80 * width) / 100 : (43 * width) / 100
+        const tabWidth = showDefaultTabs ? width / nTabs : nTabs > 2 ? ((80 * width) / 100) : (43 * width) / 100
         return { width: tabWidth, x: i * tabWidth }
       })
   )
@@ -426,6 +426,7 @@ const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, labelSty
               // when in RTL mode, the X value should be inverted
               // [-140 * index, 0]
               [index == 0 ? 0 : (-250 * index) - (35 * index), index == 0 ? 250 + 35 : (-250 * index - (35 * index)) + 250 + 35]
+              // [index == 0 ? 0 : (-250 * index) - (35 * index), index == 0 ? 250 + 35 : (-250 * index - (35 * index)) + 250 + 35]
             ),
           },
         ]
@@ -450,7 +451,7 @@ const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, labelSty
   }, [indexDecimal, itemsLayout])
 
   return (
-    <Animated.View style={[style2z, styles.activeTabContainer, { width: '90%' }, {
+    <Animated.View style={[style2z, styles.activeTabContainer, { width: '80%' }, {
       shadowColor: '#000',
       shadowOffset: {
         width: RF(0),
