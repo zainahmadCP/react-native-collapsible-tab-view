@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   Image,
   Pressable,
@@ -81,7 +81,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
 
   const nTabs = tabNames.length
 
-  const [indexData, setIndexData] = useState({
+  const [indexData, setIndexData] = React.useState({
     selected: 0,
     listIndex: 0,
   });
