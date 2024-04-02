@@ -319,7 +319,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
         <Animated.View style={[styles.outerTabContainer, RF && { height: RF(44) }]}>
           {
             tabNames?.map((tab: any, index: any) => {
-              return <MyComponent key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF} RFT={RFT} labelStyle={labelStyle} />
+              return <MyComponent key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF} labelStyle={labelStyle} />
             })
           }
         </Animated.View>
@@ -403,7 +403,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT, labelStyle }: any) => {
+const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, labelStyle }: any) => {
 
   const style2z = useAnimatedStyle(() => {
 
