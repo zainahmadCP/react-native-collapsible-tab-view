@@ -316,11 +316,12 @@ const MaterialTabBar = <T extends TabName = TabName>({
       }
       {
         !showDefaultTabs && (nTabs > 2 || nTabs == 1) &&
-        tabNames?.map((tab: any, index: any) => {
+        tabNames?.map((index: any) => {
           // return <Animated.View style={[stylez, styles.activeTabContainer]}>
           //   <Text>{index}</Text>
           // </Animated.View>
-          return <MyComponent key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF && RF} RFT={RFT && RFT} />
+          return <MyComponent key={index} />
+          // <MyComponent key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF && RF} RFT={RFT && RFT} />
         })
       }
       {
@@ -401,67 +402,68 @@ const styles = StyleSheet.create({
   },
 })
 
-const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT }: any) => {
+const MyComponent = (() => {
 
-  const style2z = useAnimatedStyle(() => {
+  // const style2z = useAnimatedStyle(() => {
 
-    const backgroundColor = interpolateColor(
-      indexDecimal.value,
-      itemsLayout.map((_: any, i: any) => i),
-      ['white', 'white']
-    )
-    // currentTabName.current = tabNames[Math.floor(indexDecimal.value)]
-    // console.log("item layout are: ", itemsLayout, windowWidth);
-    // console.log("current tab name: ", currentTabName?.current)
-
-
-    const transform: any =
-      itemsLayout.length > 1
-        ? [
-          {
-            translateX: interpolate(
-              indexDecimal.value,
-              [0, 1],
-              // when in RTL mode, the X value should be inverted
-              // [-140 * index, 0]
-              [index == 0 ? 0 : (-250 * index) - (35 * index), index == 0 ? 250 + 35 : (-250 * index - (35 * index)) + 250 + 35]
-            ),
-          },
-        ]
-        : undefined
-
-    const width =
-      itemsLayout.length > 1
-        ? interpolate(
-          indexDecimal.value,
-          itemsLayout.map((_: any, i: any) => i),
-          itemsLayout.map((v: any) => v.width)
-        )
-        : itemsLayout[0]?.width
+  //   const backgroundColor = interpolateColor(
+  //     indexDecimal.value,
+  //     itemsLayout.map((_: any, i: any) => i),
+  //     ['white', 'white']
+  //   )
+  //   // currentTabName.current = tabNames[Math.floor(indexDecimal.value)]
+  //   // console.log("item layout are: ", itemsLayout, windowWidth);
+  //   // console.log("current tab name: ", currentTabName?.current)
 
 
-    return {
-      transform,
-      width,
-      // opacity: 0,
-      backgroundColor
-    }
-  }, [indexDecimal, itemsLayout])
+  //   const transform: any =
+  //     itemsLayout.length > 1
+  //       ? [
+  //         {
+  //           translateX: interpolate(
+  //             indexDecimal.value,
+  //             [0, 1],
+  //             // when in RTL mode, the X value should be inverted
+  //             // [-140 * index, 0]
+  //             [index == 0 ? 0 : (-250 * index) - (35 * index), index == 0 ? 250 + 35 : (-250 * index - (35 * index)) + 250 + 35]
+  //           ),
+  //         },
+  //       ]
+  //       : undefined
+
+  //   const width =
+  //     itemsLayout.length > 1
+  //       ? interpolate(
+  //         indexDecimal.value,
+  //         itemsLayout.map((_: any, i: any) => i),
+  //         itemsLayout.map((v: any) => v.width)
+  //       )
+  //       : itemsLayout[0]?.width
+
+
+  //   return {
+  //     transform,
+  //     width,
+  //     // opacity: 0,
+  //     backgroundColor
+  //   }
+  // }, [indexDecimal, itemsLayout])
 
   return (
-    <Animated.View style={[style2z, styles.activeTabContainer, {
-      shadowColor: '#000',
-      shadowOffset: {
-        width: RF(0),
-        height: RF(1),
-      },
-      shadowOpacity: RF(0.2),
-      shadowRadius: RF(1.41),
-      elevation: RF(2),
-      backgroundColor: 'white',
-    }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6), width: '80%' }]}
-    >
-      <Animated.Text style={{ textAlign: 'center', fontSize: RFT ? RFT(14) : 14, color: 'black' }}>{tabNames[index]}</Animated.Text>
-    </Animated.View>
+    <Animated.View style={{ width: '30%', height: 50, backgroundColor: 'red' }} />
+    // <Animated.View style={[style2z, styles.activeTabContainer, {
+    //   shadowColor: '#000',
+    //   shadowOffset: {
+    //     width: RF(0),
+    //     height: RF(1),
+    //   },
+    //   shadowOpacity: RF(0.2),
+    //   shadowRadius: RF(1.41),
+    //   elevation: RF(2),
+    //   backgroundColor: 'white',
+    // }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6), width: '80%' }]}
+    // >
+    //   <Animated.Text style={{ textAlign: 'center', fontSize: RFT ? RFT(14) : 14, color: 'black' }}>{tabNames[index]}</Animated.Text>
+    // </Animated.View>
   );
 })
