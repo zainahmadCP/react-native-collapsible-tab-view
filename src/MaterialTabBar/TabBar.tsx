@@ -425,7 +425,7 @@ const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, labelSty
               [0, 1],
               // when in RTL mode, the X value should be inverted
               // [-140 * index, 0]
-              [index == 0 ? 0 : (-250 * index) - (35 * index), index == 0 ? 250 + 35 : (-250 * index - (35 * index)) + 250 + 35]
+              [index == 0 ? 0 : (-80 * index) - (35 * index), index == 0 ? 80 + 35 : (-80 * index - (35 * index)) + 80 + 35]
               // [index == 0 ? 0 : (-250 * index) - (35 * index), index == 0 ? 250 + 35 : (-250 * index - (35 * index)) + 250 + 35]
             ),
           },
