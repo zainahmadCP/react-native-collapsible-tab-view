@@ -319,7 +319,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
         <Animated.View style={[styles.outerTabContainer, RF && { height: RF(44) }]}>
           {
             tabNames?.map((tab: any, index: any) => {
-              return <MyComponent key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF} RFT={RFT} />
+              return <MyComponent key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF} RFT={RFT} labelStyle={labelStyle} />
             })
           }
         </Animated.View>
@@ -403,7 +403,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT }: any) => {
+const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT, labelStyle }: any) => {
 
   const style2z = useAnimatedStyle(() => {
 
@@ -451,7 +451,7 @@ const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT }: a
   }, [indexDecimal, itemsLayout])
 
   return (
-    <Animated.View style={[style2z, styles.activeTabContainer, {
+    <Animated.View style={[style2z, styles.activeTabContainer, { width: '90%' }, {
       shadowColor: '#000',
       shadowOffset: {
         width: RF(0),
@@ -461,9 +461,9 @@ const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, RFT }: a
       shadowRadius: RF(1.41),
       elevation: RF(2),
       backgroundColor: 'white',
-    }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6), width: '80%' }]}
+    }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6) }]}
     >
-      <Animated.Text style={{ textAlign: 'center', fontSize: RFT ? RFT(14) : 14, color: 'black' }}>{tabNames[index]}</Animated.Text>
+      <Animated.Text style={[labelStyle && labelStyle, styles.activeTabText]}>{tabNames[index]}</Animated.Text>
     </Animated.View>
   );
 })
