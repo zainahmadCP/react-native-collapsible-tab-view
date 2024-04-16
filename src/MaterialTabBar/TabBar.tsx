@@ -538,6 +538,7 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
 
   return (
     <Animated.View style={[style2z, styles.activeTabContainer, { width: '80%' }, {
+      position: 'absolute',
       shadowColor: '#000',
       shadowOffset: {
         width: RF(0),
