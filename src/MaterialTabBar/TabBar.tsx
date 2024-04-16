@@ -9,7 +9,7 @@ import {
 import Animated, {
   cancelAnimation,
   interpolate,
-  interpolateColor,
+  // interpolateColor,
   scrollTo,
   useAnimatedReaction,
   useAnimatedRef,
