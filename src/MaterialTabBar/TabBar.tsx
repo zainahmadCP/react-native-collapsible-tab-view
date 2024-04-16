@@ -508,7 +508,7 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
           {
             translateX: interpolate(
               indexDecimal.value,
-              [0, 4],
+              [0, 1],
               // when in RTL mode, the X value should be inverted
               // [-140 * index, 0]
               [index == 0 ? 0 : (-windowWidth * index) - (35 * index), index == 0 ? windowWidth + 35 : (-windowWidth * index - (35 * index)) + windowWidth + 35]
