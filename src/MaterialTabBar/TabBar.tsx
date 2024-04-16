@@ -546,7 +546,7 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
       shadowOpacity: RF(0.2),
       shadowRadius: RF(1.41),
       elevation: RF(2),
-      backgroundColor: 'white',
+      backgroundColor: 'red',
     }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6) }]}
     >
       <Animated.Text style={[labelStyle && labelStyle, styles.activeTabText]}>{tabNames[index]}</Animated.Text>
