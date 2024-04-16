@@ -549,7 +549,7 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
       backgroundColor: 'white',
     }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6) }]}
     >
-      <Animated.Text style={[labelStyle && labelStyle, styles.activeTabText]}>{tabNames[index]}</Animated.Text>
+      {/* <Animated.Text style={[labelStyle && labelStyle, styles.activeTabText]}>{tabNames[index]}</Animated.Text> */}
     </Animated.View>
   );
 })
