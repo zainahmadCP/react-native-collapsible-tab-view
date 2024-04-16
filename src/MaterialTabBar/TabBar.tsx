@@ -365,7 +365,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
         <Animated.View style={[styles.outerTabContainer, { width: '78%', justifyContent: 'center' }, RF && { height: RF(44), borderRadius: RF(6) }]}>
           {
             tabNames?.map((tab: any, index: any) => {
-              return <MyComponent key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF} labelStyle={labelStyle} />
+              return <MyComponent windowWidth={width} key={tab} index={index} indexDecimal={indexDecimal} itemsLayout={itemsLayout} tabNames={tabNames} RF={RF} labelStyle={labelStyle} />
             })
           }
         </Animated.View>
@@ -488,7 +488,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const MyComponent = (({ index, indexDecimal, itemsLayout, tabNames, RF, labelStyle }: any) => {
+const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames, RF, labelStyle }: any) => {
 
   const style2z = useAnimatedStyle(() => {
 
