@@ -492,11 +492,12 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
 
   const style2z = useAnimatedStyle(() => {
 
-    const backgroundColor = interpolateColor(
-      indexDecimal.value,
-      itemsLayout.map((_: any, i: any) => i),
-      ['white', 'white']
-    )
+    // const backgroundColor = interpolateColor(
+    //   indexDecimal.value,
+    //   itemsLayout.map((_: any, i: any) => i),
+    //   ['white', 'white']
+    // )
+
     // currentTabName.current = tabNames[Math.floor(indexDecimal.value)]
     // console.log("item layout are: ", itemsLayout, windowWidth);
     // console.log("current tab name: ", currentTabName?.current)
@@ -532,13 +533,13 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
       transform,
       width,
       // opacity: 0,
-      backgroundColor
+      // backgroundColor,
+      backgroundColor: 'white',
     }
   }, [indexDecimal, itemsLayout])
 
   return (
     <Animated.View style={[style2z, styles.activeTabContainer, { width: '80%' }, {
-      position: 'absolute',
       shadowColor: '#000',
       shadowOffset: {
         width: RF(0),
@@ -547,7 +548,7 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
       shadowOpacity: RF(0.2),
       shadowRadius: RF(1.41),
       elevation: RF(2),
-      backgroundColor: '#FFFFFF',
+      backgroundColor: 'white',
     }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6) }]}
     >
       <Animated.Text style={[labelStyle && labelStyle, styles.activeTabText]}>{tabNames[index]}</Animated.Text>
