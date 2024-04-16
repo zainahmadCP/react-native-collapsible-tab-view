@@ -508,7 +508,7 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
           {
             translateX: interpolate(
               indexDecimal.value,
-              [0, 1],
+              [0, 4],
               // when in RTL mode, the X value should be inverted
               // [-140 * index, 0]
               [index == 0 ? 0 : (-windowWidth * index) - (35 * index), index == 0 ? windowWidth + 35 : (-windowWidth * index - (35 * index)) + windowWidth + 35]
@@ -546,7 +546,7 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
       shadowOpacity: RF(0.2),
       shadowRadius: RF(1.41),
       elevation: RF(2),
-      backgroundColor: 'red',
+      backgroundColor: 'white',
     }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6) }]}
     >
       <Animated.Text style={[labelStyle && labelStyle, styles.activeTabText]}>{tabNames[index]}</Animated.Text>
