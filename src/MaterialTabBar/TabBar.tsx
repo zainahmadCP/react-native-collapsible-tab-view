@@ -511,8 +511,7 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
               [0, 1],
               // when in RTL mode, the X value should be inverted
               // [-140 * index, 0]
-              // [index == 0 ? 0 : (-windowWidth * index) - (35 * index), index == 0 ? windowWidth + 35 : (-windowWidth * index - (35 * index)) + windowWidth + 35]
-              [index == 0 ? 0 : (-windowWidth * index) - (35 * index), index == 0 ? windowWidth + 35 : ((-windowWidth * index) - (35 * index)) + windowWidth + 35]
+              [index == 0 ? 0 : (-windowWidth * index) - (35 * index), index == 0 ? windowWidth + 35 : (-windowWidth * index - (35 * index)) + windowWidth + 35]
               // [index == 0 ? 0 : (-250 * index) - (35 * index), index == 0 ? 250 + 35 : (-250 * index - (35 * index)) + 250 + 35]
             ),
           },
@@ -539,14 +538,14 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
 
   return (
     <Animated.View style={[style2z, styles.activeTabContainer, { width: '80%' }, {
-      shadowColor: '#000',
-      shadowOffset: {
-        width: RF(0),
-        height: RF(1),
-      },
-      shadowOpacity: RF(0.2),
-      shadowRadius: RF(1.41),
-      elevation: RF(2),
+      // shadowColor: '#000',
+      // shadowOffset: {
+      //   width: RF(0),
+      //   height: RF(1),
+      // },
+      // shadowOpacity: RF(0.2),
+      // shadowRadius: RF(1.41),
+      // elevation: RF(2),
       backgroundColor: 'white',
     }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6) }]}
     >
