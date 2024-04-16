@@ -538,15 +538,15 @@ const MyComponent = (({ windowWidth, index, indexDecimal, itemsLayout, tabNames,
 
   return (
     <Animated.View style={[style2z, styles.activeTabContainer, { width: '80%' }, {
-      // shadowColor: '#000',
-      // shadowOffset: {
-      //   width: RF(0),
-      //   height: RF(1),
-      // },
-      // shadowOpacity: RF(0.2),
-      // shadowRadius: RF(1.41),
-      // elevation: RF(2),
-      backgroundColor: 'white',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: RF(0),
+        height: RF(1),
+      },
+      shadowOpacity: RF(0.2),
+      shadowRadius: RF(1.41),
+      elevation: RF(2),
+      backgroundColor: '#FFFFFF',
     }, RF && { margin: RF(4), height: RF(36), borderRadius: RF(6) }]}
     >
       <Animated.Text style={[labelStyle && labelStyle, styles.activeTabText]}>{tabNames[index]}</Animated.Text>
